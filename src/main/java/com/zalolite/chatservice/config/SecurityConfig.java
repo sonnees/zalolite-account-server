@@ -44,8 +44,7 @@ public class SecurityConfig {
 
         return http.authorizeExchange(
                         auth -> auth.pathMatchers("/api/v1/user/update-avatar-account/**", "/ws/**", "/api/v1/user/create").permitAll()
-                                .pathMatchers("/context-path/**").permitAll()
-                                .anyExchange().authenticated()
+                                .anyExchange().permitAll()
                 )
                 .authenticationManager(authenticationManager)
                 .securityContextRepository(securityContextRepository)
