@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
+import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.http.client.HttpClient;
 
 import java.util.Arrays;
@@ -63,6 +65,10 @@ public class SecurityConfig {
                 .resolver(DefaultAddressResolverGroup.INSTANCE);
     }
 
+    @Bean
+    public WebClient.Builder loadBalancedWebClientBuilder(HttpClient httpClient) {
+        return WebClient.builder().clientConnector(new ReactorClientHttpConnector(httpClient));
+    }
 
     @Bean
     public TaskExecutor taskExecutor() {

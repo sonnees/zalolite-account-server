@@ -72,7 +72,7 @@ public class AuthController {
                     WebClient webClient = builder.build();
                     return  webClient
                             .post()
-                            .uri("http://CHAT-SERVICE/api/v1/user/create?id="+result.getProfile().getUserID())
+                            .uri("https://zalolite-c.up.railway.app/api/v1/user/create?id="+result.getProfile().getUserID())
                             .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                             .retrieve()
                             .bodyToMono(Boolean.class)
