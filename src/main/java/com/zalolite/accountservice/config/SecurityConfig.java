@@ -4,6 +4,7 @@ import com.zalolite.accountservice.jwt.AuthenticationManager;
 import com.zalolite.accountservice.jwt.SecurityContextRepository;
 import io.netty.resolver.DefaultAddressResolverGroup;
 import lombok.AllArgsConstructor;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
@@ -66,6 +67,7 @@ public class SecurityConfig {
     }
 
     @Bean
+    @LoadBalanced
     public WebClient.Builder loadBalancedWebClientBuilder(HttpClient httpClient) {
         return WebClient.builder().clientConnector(new ReactorClientHttpConnector(httpClient));
     }
