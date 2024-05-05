@@ -158,7 +158,7 @@ public class AccountController {
                                             String oldAvatar = account.getProfile().getAvatar();
                                             String newAvatar = info.getField();
                                             return webClient.get()
-                                                    .uri("lb://CHAT-SERVICE/api/v1/user/update-avatar-account?oldAvatar="+ oldAvatar+"&newAvatar="+newAvatar)
+                                                    .uri("https://zalolite-chat-server-production.up.railway.app/api/v1/user/update-avatar-account?oldAvatar="+ oldAvatar+"&newAvatar="+newAvatar)
                                                     .retrieve()
                                                     .bodyToMono(Void.class)
                                                     .then(Mono.just(ResponseEntity.ok("Success")));
