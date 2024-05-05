@@ -1,9 +1,4 @@
-[build]
-builder = "nixpacks"
-buildCommand = "echo building!"
-
 [deploy]
 startCommand = "echo starting!"
-healthcheckPath = "/"
 healthcheckTimeout = 86400
-restartPolicyType = "never"
+
