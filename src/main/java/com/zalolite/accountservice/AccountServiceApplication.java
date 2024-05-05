@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRep
 
 @SpringBootApplication
 @EnableReactiveMongoRepositories
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 public class AccountServiceApplication implements CommandLineRunner{
 
     @Autowired
