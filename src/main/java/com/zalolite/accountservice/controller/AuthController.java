@@ -72,7 +72,7 @@ public class AuthController {
                     WebClient webClient = builder.build();
                     return  webClient
                             .post()
-                            .uri("https://zalolite-chat-server-production.up.railway.app/api/v1/user/create?id="+result.getProfile().getUserID())
+                            .uri("lb://CHAT-SERVICE/api/v1/user/create?id="+result.getProfile().getUserID())
                             .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                             .retrieve()
                             .bodyToMono(Boolean.class)
@@ -161,7 +161,7 @@ public class AuthController {
 
     @GetMapping("/get-userid/{token}")
     public Mono<String> getPhoneNumber(@PathVariable String token) {
-        log.info("### enter reset password ###");
+        log.info("### enter get phone number ###");
         log.info("# {} #", token);
         return accountRepository.searchByPhoneNumber(jwtService.extractUsername(token))
                 .flatMap(account -> {
