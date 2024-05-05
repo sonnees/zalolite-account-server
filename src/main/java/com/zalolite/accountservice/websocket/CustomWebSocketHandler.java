@@ -28,7 +28,6 @@ public class CustomWebSocketHandler implements WebSocketHandler {
 
         sessions.put(sessionId, session);
         Flux<WebSocketMessage> sendFlux = Flux.just(session.textMessage("Connect success"));
-
         return session
                 .send(sendFlux)
                 .thenMany(session.receive()
