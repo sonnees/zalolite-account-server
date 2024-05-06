@@ -4,6 +4,6 @@ buildCommand = "echo building!"
 
 [deploy]
 startCommand = "echo starting!"
-healthcheckPath = "https://zalolite-account-server-production.up.railway.app"  # Chỉ định đường dẫn kiểm tra sức khỏe
+healthcheckPath = "https://zalolite-account-server-production.up.railway.app/api/v1/auth/authenticate/qr-code"  # Chỉ định đường dẫn kiểm tra sức khỏe
 healthcheckTimeout = 300  # Đặt thời gian chờ tối đa (tính bằng giây)
 restartPolicyType = "never"
