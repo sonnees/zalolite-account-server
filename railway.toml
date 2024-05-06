@@ -4,5 +4,6 @@ buildCommand = "echo building!"
 
 [deploy]
 startCommand = "echo starting!"
+healthcheckPath = "/check"  # Chỉ định đường dẫn kiểm tra sức khỏe
 healthcheckTimeout = 300  # Đặt thời gian chờ tối đa (tính bằng giây)
 restartPolicyType = "never"
