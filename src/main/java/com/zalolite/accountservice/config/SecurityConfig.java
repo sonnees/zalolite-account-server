@@ -36,6 +36,7 @@ public class SecurityConfig {
         return http.authorizeExchange(
                         auth ->
                                 auth.pathMatchers("/api/v1/auth/**", "/ws/auth/**", "/health").permitAll()
+                                        .pathMatchers("/v3/**","/swagger-ui/**", "/context-path/**","/webjars/**","/swagger-ui.html").permitAll()
                                         .anyExchange().authenticated()
                 )
                 .authenticationManager(authenticationManager)
